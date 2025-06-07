@@ -34,25 +34,15 @@
         };
     };
 
-    // combos {
-    //    compatible = "zmk,combos";
-    //
-    //    bt_clear {
-    //        bindings = <&bt BT_CLR>;
-    //      key-positions = <28 29>;
-    //         layers = <2>;
-    //    };
-    // };
-
     keymap {
         compatible = "zmk,keymap";
 
         layer_0 {
             bindings = <
-            &mt LGUI QUOT   &kp COMMA &kp DOT     &kp P          &kp Y                                  &kp F     &kp G        &kp C       &kp R     &kp L
-            &kp A           &kp O     &mt LCTRL E &kp U          &kp I                                  &kp D     &kp H        &mt RCTRL T &kp N     &kp S
-            &mt LSHIFT SEMI &kp Q     &kp J       &kp K          &kp X                                  &kp B     &kp M        &kp W       &kp V     &mt RSHIFT Z
-            &kp LCTRL       &kp LGUI  &kp LALT    &mt LALT BSPC  &mo 2 &mt LSHIFT SPACE &mt RCTRL ENTER &mo 3     &mt RALT TAB &trans
+            &mt LGUI QUOT   &kp COMMA &kp DOT     &kp P          &kp Y                                       &kp F     &kp G        &kp C       &kp R     &kp L
+            &kp A           &kp O     &mt LCTRL E &kp U          &kp I                                       &kp D     &kp H        &mt RCTRL T &kp N     &kp S
+            &mt LSHIFT SEMI &kp Q     &kp J       &kp K          &kp X                                       &kp B     &kp M        &kp W       &kp V     &mt RSHIFT Z
+            &mo 6           &kp LGUI  &kp LALT    &mt LALT BSPC  &mo 2 &mt LSHIFT SPACE      &mt RCTRL ENTER &mo 3     &mt RALT TAB &trans      &trans    &mo 6
             >;
         };
 
@@ -67,10 +57,10 @@
 
         layer_2 {
             bindings = <
-            &kp F1  &kp F2  &kp F3    &kp F4          &kp F5                  &trans         &kp HOME   &kp PG_DN  &kp PG_UP   &kp END
-            &kp F6  &kp F7  &kp F8    &kp F9          &kp F10                 &kp LA(GRAVE)  &kp LEFT   &kp DOWN   &kp UP      &kp RIGHT    
-            &kp F11 &kp F12 &kp PSCRN &kp PAUSE_BREAK &kp INS                 &mkp MCLK      &mkp LCLK  &mo 6      &mkp RCLK   &trans
-            &trans  &trans  &trans    &mt LALT DEL    &trans  &trans  &trans  &mo 4          &trans     &trans     &trans      &trans       
+            &kp F1         &kp F2  &kp F3    &kp F4          &kp F5                  &trans         &kp HOME   &kp PG_DN  &kp PG_UP   &kp END
+            &kp F6         &kp F7  &kp F8    &kp F9          &kp F10                 &kp LA(GRAVE)  &kp LEFT   &kp DOWN   &kp UP      &kp RIGHT    
+            &mt LSHIFT F11 &kp F12 &kp PSCRN &kp PAUSE_BREAK &kp INS                 &mkp MCLK      &mkp LCLK  &mo 6      &mkp RCLK   &trans
+            &trans         &trans  &trans    &mt LALT DEL    &trans  &trans  &trans  &mo 4          &trans     &trans     &trans      &trans       
             >;
         };
 
@@ -85,10 +75,10 @@
 
         layer_4 {
             bindings = <
-            &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            &BT_SEL 0  &BT_SEL 1  &BT_SEL 2  &BT_SEL 3  &BT_SEL 4                       &BT_CLR  &trans  &trans  &trans  &BT_CLR_ALL
+            &trans     &trans     &trans     &trans     &trans                          &trans   &trans  &trans  &trans  &trans
+            &trans     &trans     &trans     &trans     &trans                          &trans   &trans  &trans  &trans  &trans
+            &trans     &trans     &trans     &trans     &trans  &trans          &trans  &trans   &trans  &trans  &trans  &trans
             >;
         };
 
@@ -103,10 +93,10 @@
 
         layer_6 {
             bindings = <
-            &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            &trans  &trans  &trans  &trans  &bootloader             &bootloader  &trans  &trans  &trans  &trans
+            &trans  &trans  &trans  &trans  &trans                  &trans       &trans  &trans  &trans  &trans
+            &trans  &trans  &trans  &trans  &trans                  &trans       &trans  &trans  &trans  &trans
+            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans
             >;
         };
 
