@@ -67,7 +67,7 @@
         layer_3 {
             bindings = <
             &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                  &kp N6    &kp N7         &kp N8     &kp N9     &kp N0
-            &trans  &trans  &trans  &trans  &trans                  &kp LBRC  &kp RBRC       &kp SLASH  &kp EQUAL  &kp MINUS
+            &trans  &trans  &kp ESC &trans  &kp TAB                 &kp LBKT  &kp RBKT       &kp SLASH  &kp EQUAL  &kp MINUS
             &trans  &trans  &trans  &trans  &trans                  &kp GRAVE &kp BACKSLASH  &trans     &trans     &trans
             &trans  &trans  &trans  &trans  &mo 4  &trans   &trans  &trans    &trans         &trans     &trans     &trans
             >;
