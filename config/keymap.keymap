@@ -5,52 +5,81 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    combos {
-        compatible = "zmk,combos";
+    // --- 追加: Mod-Tapの挙動をカスタマイズ ---
+    behaviors {
+        // デフォルトのMod-Tap(&mt)の挙動を上書きし、QMK風の快適な設定に変更します
+        mt: mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOD_TAP_QMK_LIKE";
+            #binding-cells = <2>;
+            
+            // --- ここからがカスタマイズ項目です ---
 
-        bt_clear {
-            bindings = <&bt BT_CLR>;
-            key-positions = <28 29>;
-            layers = <2>;
+            // タップとホールドを認識する時間。200msに設定。
+            tapping-term-ms = <200>;
+            
+            // 'tap-preferred'フレーバーを選択。
+            // これにより、高速でキーを連続入力（ローリング）した際に、
+            // ホールド（モディファイア）が誤爆するのを防ぎます。
+            // QMKの`IGNORE_MOD_TAP_INTERRUPT`に近い挙動です。
+            flavor = "tap-preferred"; 
+
+            // (オプション) この時間内の素早い連続タップは、強制的にタップとして扱います。
+            // これにより、スペースキーやエンターキーの連続タップがより確実になります。
+            quick-tap-ms = <150>;
+
+            // --- ここまでがカスタマイズ項目です ---
+
+            bindings = <&kp>, <&kp>;
         };
     };
+
+    // combos {
+    //    compatible = "zmk,combos";
+    //
+    //    bt_clear {
+    //        bindings = <&bt BT_CLR>;
+    //      key-positions = <28 29>;
+    //         layers = <2>;
+    //    };
+    // };
 
     keymap {
         compatible = "zmk,keymap";
 
         layer_0 {
             bindings = <
-            &mt LGUI QUOT   &kp COMMA &kp DOT   &kp P     &kp Y                                  &kp F     &kp G     &kp C     &kp R     &kp L
-            &kp A           &kp O     &kp E     &kp U     &kp I                                  &kp D     &kp H     &kp T     &kp N     &kp S
-            &mt LSHIFT SEMI &kp Q     &kp J     &kp K     &kp X                                  &kp B     &kp M     &kp W     &kp V     &mt RSHIFT Z
-            &kp LCTRL       &kp LGUI  &kp LALT  &mt LALT BSPC  &mo 2 &mt LSHIFT SPACE &mt RCTRL ENTER &mo 3     &mt RALT TAB &trans
+            &mt LGUI QUOT   &kp COMMA &kp DOT     &kp P          &kp Y                                  &kp F     &kp G        &kp C       &kp R     &kp L
+            &kp A           &kp O     &mt LCTRL E &kp U          &kp I                                  &kp D     &kp H        &mt RCTRL T &kp N     &kp S
+            &mt LSHIFT SEMI &kp Q     &kp J       &kp K          &kp X                                  &kp B     &kp M        &kp W       &kp V     &mt RSHIFT Z
+            &kp LCTRL       &kp LGUI  &kp LALT    &mt LALT BSPC  &mo 2 &mt LSHIFT SPACE &mt RCTRL ENTER &mo 3     &mt RALT TAB &trans
             >;
         };
 
         layer_1 {
             bindings = <
-            &trans  &trans  &trans     &trans     &trans                  &trans  &trans     &trans     &trans  &trans
-            &trans  &trans  &mkp RCLK  &mkp LCLK  &trans                  &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
-            &trans  &trans  &trans     &trans     &trans                  &trans  &trans     &trans     &trans  &trans
-            &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans
+            &trans  &trans     &trans     &trans     &mkp MB5                &mkp MB5     &trans     &trans     &trans     &trans
+            &trans  &mkp RCLK  &mo 6      &mkp LCLK  &mkp MCLK               &mkp MCLK    &mkp LCLK  &mo 6      &mkp RCLK  &trans
+            &trans  &trans     &trans     &trans     &mkp MB4                &mkp MB4     &trans     &trans     &trans     &trans
+            &trans  &trans     &trans     &trans     &trans  &trans  &trans  &trans       &trans     &trans     &trans     &trans
             >;
         };
 
         layer_2 {
             bindings = <
-            &kp F1  &kp F2  &kp F3    &kp F4          &kp F5                       &trans         &kp HOME      &kp PG_DN        &kp PG_UP   &kp END
-            &kp F6  &kp F7  &kp F8    &kp F9          &kp F10                      &kp LA(GRAVE)  &kp LEFT      &kp DOWN         &kp UP      &kp RIGHT    
-            &kp F11 &kp F12 &kp PSCRN &kp PAUSE_BREAK &kp INS                      &mkp MCLK      &mkp LCLK     &trans           &mkp RCLK   &trans
-            &trans  &trans  &trans    &trans          &mt LALT DEL  &trans &trans  &mo 4          &trans        &trans           &trans      &trans       
+            &kp F1  &kp F2  &kp F3    &kp F4          &kp F5                  &trans         &kp HOME   &kp PG_DN  &kp PG_UP   &kp END
+            &kp F6  &kp F7  &kp F8    &kp F9          &kp F10                 &kp LA(GRAVE)  &kp LEFT   &kp DOWN   &kp UP      &kp RIGHT    
+            &kp F11 &kp F12 &kp PSCRN &kp PAUSE_BREAK &kp INS                 &mkp MCLK      &mkp LCLK  &mo 6      &mkp RCLK   &trans
+            &trans  &trans  &trans    &mt LALT DEL    &trans  &trans  &trans  &mo 4          &trans     &trans     &trans      &trans       
             >;
         };
 
         layer_3 {
             bindings = <
-            &kp N1   &kp N2  &kp N3  &kp N4  &kp N5                 &kp N6    &kp N7  &kp N8  &kp N9  &kp N0
-            &trans  &trans  &trans  &trans  &trans                  &kp LBRC  &kp RBRC  &kp SLASH  &kp EQUAL  &kp MINUS
-            &trans  &trans  &trans  &trans  &trans                  &kp GRAVE &kp BACKSLASH  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                  &kp N6    &kp N7         &kp N8     &kp N9     &kp N0
+            &trans  &trans  &trans  &trans  &trans                  &kp LBRC  &kp RBRC       &kp SLASH  &kp EQUAL  &kp MINUS
+            &trans  &trans  &trans  &trans  &trans                  &kp GRAVE &kp BACKSLASH  &trans     &trans     &trans
+            &trans  &trans  &trans  &trans  &mo 4  &trans   &trans  &trans    &trans         &trans     &trans     &trans
             >;
         };
 
