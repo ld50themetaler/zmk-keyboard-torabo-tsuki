@@ -161,3 +161,15 @@
         automouse-layer = <1>;
     };
 };
+
+#define ALT_GRAVE_MACRO &macro_alt_grave
+
+&macro_alt_grave {
+    wait-ms = <5>;
+    bindings = <
+        &press LALT
+        &press GRAVE
+        &release GRAVE
+        &release LALT
+    >;
+};
