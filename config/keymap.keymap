@@ -39,13 +39,13 @@
     macros {
         macro_alt_grave: macro_alt_grave {
             compatible = "zmk,behavior-macro";
-            wait-ms = <5>; // 必要に応じて調整（数ミリ秒で十分なはずです）
-            bindings = <
-                &press LALT
-                &press GRAVE
-                &release GRAVE
-                &release LALT
-            >;
+            wait-ms = <5>;
+            tap-ms = <5>;
+            bindings =
+                <&macro_press &kp LALT>
+                , <&macro_tap &kp GRAVE>
+                , <&macro_release &kp LALT>
+            ;
         };
     };
 
