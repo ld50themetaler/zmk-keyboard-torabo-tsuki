@@ -50,7 +50,7 @@
             bindings = <
             &trans  &trans     &trans     &trans     &mkp MB5                &mkp MB5     &trans     &trans     &trans     &trans
             &trans  &mkp RCLK  &mo 6      &mkp LCLK  &mkp MCLK               &mkp MCLK    &mkp LCLK  &mo 6      &mkp RCLK  &trans
-            &trans  &trans     &trans     &trans     &mkp MB4                &mkp MB4     &trans     &trans     &trans     &trans
+            &trans  &trans     &trans     &trans     &mkp MB4                &mkp MB4     &mkp LCLK  &mo 6      &mkp RCLK  &trans
             &trans  &trans     &trans     &trans     &trans  &trans  &trans  &trans       &trans     &trans     &trans     &trans
             >;
         };
@@ -93,10 +93,10 @@
 
         layer_6 {
             bindings = <
-            &trans  &trans  &trans  &trans  &bootloader             &bootloader  &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans                  &trans       &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans                  &trans       &trans  &trans  &trans  &trans
-            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans
+            &trans     &trans  &trans  &trans  &bootloader             &bootloader  &trans  &trans  &trans  &trans
+            &kp LCTRL  &trans  &trans  &trans  &trans                  &trans       &trans  &trans  &trans  &trans
+            &kp LSHIFT &trans  &trans  &trans  &trans                  &trans       &trans  &trans  &trans  &kp RSHIFT
+            &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans
             >;
         };
 
