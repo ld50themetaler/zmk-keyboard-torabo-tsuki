@@ -11,7 +11,6 @@
         // デフォルトのMod-Tap(&mt)の挙動を上書きし、QMK風の快適な設定に変更します
         mt: mod_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "MOD_TAP_QMK_LIKE";
             #binding-cells = <2>;
             
             // --- ここからがカスタマイズ項目です ---
@@ -39,6 +38,7 @@
     macros {
         macro_alt_grave: macro_alt_grave {
             compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
             wait-ms = <5>;
             tap-ms = <5>;
             bindings =
