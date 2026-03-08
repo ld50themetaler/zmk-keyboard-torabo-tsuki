@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/sekigon-gonnoc
     - name: ld50themetaler
       url-base: https://github.com/ld50themetaler
+    - name: prospector
+      url-base: https://github.com/t-ogura
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -28,5 +30,9 @@ manifest:
     - name: zmk-pmw3610-driver
       remote: ld50themetaler
       revision: torabo-tsuki
+    - name: prospector-zmk-module
+      remote: prospector
+      revision: v2.2b
+      path: modules/prospector-zmk-module
   self:
     path: config
